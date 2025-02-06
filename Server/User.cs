@@ -10,6 +10,4 @@ public partial class User
     public string Name { get; set; } = null!;
 
     public string Password { get; set; } = null!;
-
-    public virtual ICollection<Item> Items { get; set; } = new List<Item>();
 }
