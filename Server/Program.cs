@@ -42,7 +42,8 @@ app.MapPost("/items", async (Item item, ToDoDbContext db) => {
 app.MapPut("/items/{id}", async (int id, Item updatedItem, ToDoDbContext db) => {
     var item = await db.Items.FindAsync(id);
     if (item is null) return Results.NotFound();
-    item.Name = updatedItem.Name;
+    if(updatedItem.Name!=null)
+        item.Name = updatedItem.Name;
     item.IsComplete = updatedItem.IsComplete;
     await db.SaveChangesAsync();
     return Results.NoContent();
